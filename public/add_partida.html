@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Partida - JHD Managers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <img src="logo.png" alt="JHD Managers" class="logo">
+      <span class="header-title">JHD Managers</span>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Partidas</a>
+      <a href="add_partida.html" class="active">Adicionar</a>
+    </nav>
+  </header>
+  
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <div class="container">
+    <h1 class="page-title">Adicionar Partida</h1>
+    
+    <div class="upload-section">
+      <form id="uploadForm">
+        <div class="form-group">
+          <label for="matchDate">Data da Partida</label>
+          <input type="date" id="matchDate" name="matchDate" required>
+        </div>
+        
+        <div class="file-input-wrapper">
+          <input type="file" id="imageInput" accept="image/*" required>
+          <label for="imageInput">Escolher imagem</label>
+          <span id="fileName">Nenhum arquivo selecionado</span>
+        </div>
+        <button type="submit">Analisar Partida</button>
+      </form>
+      
+      <div id="preview"></div>
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

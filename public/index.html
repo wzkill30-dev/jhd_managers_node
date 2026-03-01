@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partidas - JHD Managers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <img src="logo.png" alt="JHD Managers" class="logo">
+      <span class="header-title">JHD Managers</span>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Partidas</a>
+      <a href="add_partida.html">Adicionar</a>
+    </nav>
+  </header>
+  
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <div class="container">
+    <h1 class="page-title">Histórico de Partidas</h1>
+    
+    <div id="matchesList"></div>
+  </div>
+
+  <!-- Modal de Detalhes -->
+  <div id="matchModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Detalhes da Partida</h2>
+        <div class="modal-actions">
+          <button class="btn-delete" onclick="deleteMatch()">🗑️ Excluir</button>
+          <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Conteúdo será preenchido dinamicamente -->
+      </div>
+    </div>
+  </div>
+
+  <script src="matches.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>
