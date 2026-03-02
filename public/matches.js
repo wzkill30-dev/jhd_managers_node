@@ -120,8 +120,8 @@ function showMatchDetails(match) {
           <div class="detail-value">${formattedDate}</div>
         </div>
         <div class="detail-item">
-          <div class="detail-label">ID</div>
-          <div class="detail-value">#${match.id}</div>
+          <div class="detail-label">ID da Partida</div>
+          <div class="detail-value">#${match.match_id || match.id}</div>
         </div>
       </div>
     </div>
@@ -156,40 +156,40 @@ function showMatchDetails(match) {
             <div class="detail-value highlight">${rawData.home_possession}% × ${rawData.away_possession}%</div>
           </div>
         ` : ''}
-        ${rawData.shot_accuracy_home ? `
+        ${rawData.shot_accuracy_home !== null && rawData.shot_accuracy_home !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Precisão de Chutes</div>
-            <div class="detail-value highlight">${rawData.shot_accuracy_home}% × ${rawData.shot_accuracy_away}%</div>
+            <div class="detail-value highlight">${rawData.shot_accuracy_home || 0}% × ${rawData.shot_accuracy_away || 0}%</div>
           </div>
         ` : ''}
-        ${rawData.pass_accuracy_home ? `
+        ${rawData.pass_accuracy_home !== null && rawData.pass_accuracy_home !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Precisão de Passes</div>
-            <div class="detail-value highlight">${rawData.pass_accuracy_home}% × ${rawData.pass_accuracy_away}%</div>
+            <div class="detail-value highlight">${rawData.pass_accuracy_home || 0}% × ${rawData.pass_accuracy_away || 0}%</div>
           </div>
         ` : ''}
-        ${rawData.dribbles_completed_rate_home ? `
+        ${rawData.dribbles_completed_rate_home !== null && rawData.dribbles_completed_rate_home !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Taxa de Dribles Completados</div>
-            <div class="detail-value highlight">${rawData.dribbles_completed_rate_home}% × ${rawData.dribbles_completed_rate_away}%</div>
+            <div class="detail-value highlight">${rawData.dribbles_completed_rate_home || 0}% × ${rawData.dribbles_completed_rate_away || 0}%</div>
           </div>
         ` : ''}
-        ${rawData.expected_goals_home ? `
+        ${rawData.expected_goals_home !== null && rawData.expected_goals_home !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Gols Esperados (xG)</div>
-            <div class="detail-value highlight">${rawData.expected_goals_home} × ${rawData.expected_goals_away}</div>
+            <div class="detail-value highlight">${rawData.expected_goals_home || 0} × ${rawData.expected_goals_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.passes_home ? `
+        ${rawData.passes_home !== null && rawData.passes_home !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Total de Passes</div>
-            <div class="detail-value highlight">${rawData.passes_home} × ${rawData.passes_away}</div>
+            <div class="detail-value highlight">${rawData.passes_home || 0} × ${rawData.passes_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.ball_recovery_time ? `
+        ${rawData.ball_recovery_time !== null && rawData.ball_recovery_time !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Tempo de Recuperação de Bola</div>
-            <div class="detail-value highlight">${rawData.ball_recovery_time}s</div>
+            <div class="detail-value highlight">${rawData.ball_recovery_time || 0}s</div>
           </div>
         ` : ''}
       </div>
@@ -198,28 +198,28 @@ function showMatchDetails(match) {
     <div class="detail-section">
       <h3>⚔️ Duelos e Defesa</h3>
       <div class="detail-grid">
-        ${rawData.duels_won_home ? `
+        ${rawData.duels_won_home !== null && rawData.duels_won_home !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Duelos Ganhos</div>
-            <div class="detail-value highlight">${rawData.duels_won_home} × ${rawData.duels_won_away}</div>
+            <div class="detail-value highlight">${rawData.duels_won_home || 0} × ${rawData.duels_won_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.duels_lost_home ? `
+        ${rawData.duels_lost_home !== null && rawData.duels_lost_home !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Duelos Perdidos</div>
-            <div class="detail-value highlight">${rawData.duels_lost_home} × ${rawData.duels_lost_away}</div>
+            <div class="detail-value highlight">${rawData.duels_lost_home || 0} × ${rawData.duels_lost_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.interceptions_home ? `
+        ${rawData.interceptions_home !== null && rawData.interceptions_home !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Interceptações</div>
-            <div class="detail-value highlight">${rawData.interceptions_home} × ${rawData.interceptions_away}</div>
+            <div class="detail-value highlight">${rawData.interceptions_home || 0} × ${rawData.interceptions_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.blocks_home ? `
+        ${rawData.blocks_home !== null && rawData.blocks_home !== undefined ? `
           <div class="detail-item">
             <div class="detail-label">Bloqueios</div>
-            <div class="detail-value highlight">${rawData.blocks_home} × ${rawData.blocks_away}</div>
+            <div class="detail-value highlight">${rawData.blocks_home || 0} × ${rawData.blocks_away || 0}</div>
           </div>
         ` : ''}
       </div>
@@ -228,40 +228,40 @@ function showMatchDetails(match) {
     <div class="detail-section">
       <h3>⚠️ Disciplina e Infrações</h3>
       <div class="detail-grid">
-        ${rawData.fouls_committed_home !== undefined ? `
+        ${rawData.fouls_committed_home !== undefined && rawData.fouls_committed_home !== null ? `
           <div class="detail-item">
             <div class="detail-label">Faltas Cometidas</div>
-            <div class="detail-value highlight">${rawData.fouls_committed_home} × ${rawData.fouls_committed_away}</div>
+            <div class="detail-value highlight">${rawData.fouls_committed_home || 0} × ${rawData.fouls_committed_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.fouls_home !== undefined ? `
+        ${rawData.fouls_home !== undefined && rawData.fouls_home !== null ? `
           <div class="detail-item">
             <div class="detail-label">Faltas Sofridas</div>
-            <div class="detail-value highlight">${rawData.fouls_home} × ${rawData.fouls_away}</div>
+            <div class="detail-value highlight">${rawData.fouls_home || 0} × ${rawData.fouls_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.yellow_cards_home !== undefined ? `
+        ${rawData.yellow_cards_home !== undefined && rawData.yellow_cards_home !== null ? `
           <div class="detail-item">
             <div class="detail-label">Cartões Amarelos</div>
-            <div class="detail-value highlight">${rawData.yellow_cards_home} × ${rawData.yellow_cards_away}</div>
+            <div class="detail-value highlight">${rawData.yellow_cards_home || 0} × ${rawData.yellow_cards_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.offsides_home !== undefined ? `
+        ${rawData.offsides_home !== undefined && rawData.offsides_home !== null ? `
           <div class="detail-item">
             <div class="detail-label">Impedimentos</div>
-            <div class="detail-value highlight">${rawData.offsides_home} × ${rawData.offsides_away}</div>
+            <div class="detail-value highlight">${rawData.offsides_home || 0} × ${rawData.offsides_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.corners_home !== undefined ? `
+        ${rawData.corners_home !== undefined && rawData.corners_home !== null ? `
           <div class="detail-item">
             <div class="detail-label">Escanteios</div>
-            <div class="detail-value highlight">${rawData.corners_home} × ${rawData.corners_away}</div>
+            <div class="detail-value highlight">${rawData.corners_home || 0} × ${rawData.corners_away || 0}</div>
           </div>
         ` : ''}
-        ${rawData.penalties_home !== undefined ? `
+        ${rawData.penalties_home !== undefined && rawData.penalties_home !== null ? `
           <div class="detail-item">
             <div class="detail-label">Pênaltis</div>
-            <div class="detail-value highlight">${rawData.penalties_home} × ${rawData.penalties_away}</div>
+            <div class="detail-value highlight">${rawData.penalties_home || 0} × ${rawData.penalties_away || 0}</div>
           </div>
         ` : ''}
       </div>

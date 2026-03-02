@@ -3,5 +3,6 @@ node_modules/
 uploads/
 *.db
 eafc26.json
+firebase-credentials.json
 .DS_Store
 *.log

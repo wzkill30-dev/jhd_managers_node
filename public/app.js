@@ -48,10 +48,15 @@ uploadForm.addEventListener('submit', async (e) => {
     
     const data = await response.json();
     
+    console.log('Resposta do servidor:', data);
+    
     if (data.success) {
       result.className = 'show';
       
       let html = '<h3>✅ Dados Extraídos da Imagem</h3>';
+      
+      // ID da Partida no topo
+      html += `<p class="match-id" style="font-size: 1.2em; color: #F5C842; margin-bottom: 20px;">ID da Partida: #${data.matchId}</p>`;
       
       // Informações básicas da partida
       html += '<div class="match-info">';
@@ -84,8 +89,6 @@ uploadForm.addEventListener('submit', async (e) => {
         html += '<h4>📝 Análise da Partida</h4>';
         html += `<div style="background: #1a1a1a; padding: 15px; border-radius: 8px; color: #FFFFFF; line-height: 1.6; text-align: justify; margin-top: 10px;">${data.data.match_analysis}</div>`;
       }
-      
-      html += `<p class="match-id">ID da Partida: ${data.matchId}</p>`;
       
       result.innerHTML = html;
     } else {

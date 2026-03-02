@@ -27,25 +27,35 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
     const matchDate = req.body.matchDate || new Date().toISOString().split('T')[0];
     const matchData = await extractMatchData(imagePath);
     
-    const matchId = db.insertMatch(matchData, matchDate);
+    const result = await db.insertMatch(matchData, matchDate);
 
-    res.json({ success: true, matchId, data: matchData });
+    res.json({ 
+      success: true, 
+      matchId: result.matchId,
+      firestoreId: result.firestoreId,
+      data: matchData 
+    });
   } catch (error) {
     console.error('Erro:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-app.get('/api/matches', (req, res) => {
-  const matches = db.getAllMatches();
-  res.json(matches.reverse());
+app.get('/api/matches', async (req, res) => {
+  const matches = await db.getAllMatches();
+  res.json(matches);
 });
 
-app.delete('/api/matches/:id', (req, res) => {
+app.delete('/api/matches/:id', async (req, res) => {
   try {
-    const matchId = parseInt(req.params.id);
+    const matchId = req.params.id;
+    
+    if (!matchId || matchId === 'undefined' || matchId === 'null') {
+      return res.status(400).json({ error: 'ID da partida inválido' });
+    }
+    
     console.log('Excluindo partida ID:', matchId);
-    db.deleteMatch(matchId);
+    await db.deleteMatch(matchId);
     res.json({ success: true, message: 'Partida excluída com sucesso' });
   } catch (error) {
     console.error('Erro ao excluir partida:', error);
